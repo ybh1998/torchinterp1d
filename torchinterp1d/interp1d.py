@@ -147,7 +147,7 @@ class Interp1d(torch.autograd.Function):
                 ynew = ynew.view(original_xnew_shape)
 
         ctx.save_for_backward(ynew, *saved_inputs)
-        return ynew
+        return ynew.detach()
 
     @staticmethod
     def backward(ctx, grad_out):
